@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Émissions — GAYA INFO TV</title>
+<meta name="description" content="Toutes les émissions de GAYA INFO TV — Société, Économie, Religion, Sport, Faits divers. Dagana, Saint-Louis, Sénégal.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="emissions.css">
+<style>
+/* ---- HUB HERO ---- */
+.emissions-hero {
+  background: linear-gradient(135deg, #0a0a18 0%, #12121f 100%);
+  padding: 70px 0 60px;
+}
+.emissions-hero h1 em { color: var(--color-red); }
+
+/* ---- EMISSION CARDS ---- */
+.emissions-hub { padding: 40px 0 80px; }
+
+.hub-intro {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.hub-intro h2 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 10px;
+}
+.hub-intro p {
+  font-size: 15px;
+  color: var(--color-text-2);
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+/* BIG CARDS GRID */
+.emissions-cards {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  margin-bottom: 60px;
+}
+
+.emission-hub-card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  position: relative;
+  aspect-ratio: 3/4;
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s;
+  display: block;
+  text-decoration: none;
+}
+.emission-hub-card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 16px 40px rgba(0,0,0,0.25); }
+
+.emission-hub-card .card-bg {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.4s;
+}
+.emission-hub-card:hover .card-bg { transform: scale(1.05); }
+
+.emission-hub-card .card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.15) 60%, transparent 100%);
+}
+
+.emission-hub-card .card-body {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 18px;
+  z-index: 2;
+}
+
+.card-icon-wrap {
+  width: 44px; height: 44px;
+  border-radius: var(--radius);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 12px;
+  font-size: 18px;
+  color: #fff;
+}
+
+.emission-hub-card h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 900;
+  color: #fff;
+  margin-bottom: 6px;
+  line-height: 1.1;
+}
+
+.emission-hub-card p {
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.4;
+  margin-bottom: 14px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-arrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.75);
+  transition: gap 0.2s, color 0.2s;
+}
+.emission-hub-card:hover .card-arrow { gap: 10px; color: #fff; }
+
+/* ---- LAST EPISODES (all categories) ---- */
+.recent-section {
+  margin-bottom: 60px;
+}
+
+.recent-section-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.recent-section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
+}
+
+.recent-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.recent-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: box-shadow 0.2s, transform 0.2s;
+  cursor: pointer;
+}
+.recent-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+
+.recent-thumb {
+  aspect-ratio: 16/9;
+  position: relative;
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.recent-thumb .rt-icon { font-size: 28px; color: rgba(255,255,255,0.1); }
+
+.rc-play-overlay {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,0.15);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity 0.22s;
+}
+.recent-card:hover .rc-play-overlay { opacity: 1; }
+.rc-play-circle {
+  width: 44px; height: 44px;
+  background: rgba(255,255,255,0.92);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+.rc-play-circle i { font-size: 15px; margin-left: 3px; }
+
+.rc-duration {
+  position: absolute; bottom: 7px; right: 7px;
+  background: rgba(0,0,0,0.72); color: #fff;
+  font-size: 10.5px; font-weight: 700; padding: 2px 7px; border-radius: 4px;
+}
+
+.recent-body { padding: 14px 16px 16px; }
+
+.rc-cat {
+  display: inline-block;
+  font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.1em;
+  padding: 3px 8px; border-radius: 3px; margin-bottom: 7px;
+}
+
+.recent-title {
+  font-family: var(--font-display);
+  font-size: 15px; font-weight: 700;
+  color: var(--color-text); line-height: 1.3; margin-bottom: 8px;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  transition: color 0.2s;
+}
+.recent-card:hover .recent-title { color: var(--color-red); }
+
+.rc-meta { font-size: 11.5px; color: var(--color-text-muted); display: flex; gap: 10px; }
+.rc-meta span { display: flex; align-items: center; gap: 4px; }
+.rc-meta i { font-size: 9px; }
+
+/* ---- CTA BAND ---- */
+.cta-band {
+  background: var(--color-dark);
+  border-radius: var(--radius-lg);
+  padding: 44px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.cta-band-text h3 {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+}
+.cta-band-text p {
+  font-size: 14px;
+  color: #8888a8;
+  max-width: 440px;
+}
+
+.cta-band-actions {
+  display: flex; gap: 12px; flex-shrink: 0;
+}
+
+.cta-btn-primary {
+  padding: 12px 24px;
+  background: var(--color-red);
+  color: #fff;
+  border-radius: 999px;
+  font-size: 13.5px;
+  font-weight: 700;
+  display: flex; align-items: center; gap: 8px;
+  transition: background 0.2s;
+}
+.cta-btn-primary:hover { background: var(--color-red-dark); }
+
+.cta-btn-secondary {
+  padding: 12px 24px;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  color: rgba(255,255,255,0.75);
+  border-radius: 999px;
+  font-size: 13.5px;
+  font-weight: 600;
+  display: flex; align-items: center; gap: 8px;
+  transition: all 0.2s;
+}
+.cta-btn-secondary:hover { border-color: rgba(255,255,255,0.4); color: #fff; }
+
+@media (max-width: 1024px) {
+  .emissions-cards { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 900px) {
+  .emissions-cards { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .recent-grid { grid-template-columns: 1fr 1fr; }
+  .cta-band { flex-direction: column; padding: 32px 24px; text-align: center; }
+  .cta-band-actions { justify-content: center; }
+}
+@media (max-width: 600px) {
+  .emissions-cards { grid-template-columns: 1fr 1fr; }
+  .recent-grid { grid-template-columns: 1fr; }
+  .cta-band-actions { flex-direction: column; }
+  .emissions-hero h1 { font-size: 30px; }
+}
+</style>
+</head>
+<body>
+
+<div class="ticker-wrap">
+  <div class="ticker-label"><i class="fa-solid fa-circle" style="color:#e63939;font-size:8px;"></i> EN DIRECT</div>
+  <div class="ticker-content"><span>🔴 Émissions GAYA INFO TV — Société, Économie, Religion, Sport, Faits divers &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp; 77 935 17 86 / 77 605 95 76 &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;</span></div>
+</div>
+
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <img src="gaya.jpg" alt="GAYA INFO TV" onerror="this.style.display='none'">
+      <div class="logo-text"><span class="logo-name">GAYA INFO TV</span><span class="logo-tagline">L'information de proximité</span></div>
+    </a>
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html" class="nav-link">Accueil</a>
+      <a href="actualites.html" class="nav-link">Actualités</a>
+      <div class="nav-dropdown">
+        <a href="#" class="nav-link dropdown-trigger active">Émissions <i class="fa-solid fa-chevron-down" style="font-size:10px;"></i></a>
+        <div class="dropdown-menu">
+          <a href="societe.html"><i class="fa-solid fa-users"></i> Société</a>
+          <a href="economie.html"><i class="fa-solid fa-chart-line"></i> Économie</a>
+          <a href="religion.html"><i class="fa-solid fa-mosque"></i> Religion</a>
+          <a href="sport.html"><i class="fa-solid fa-futbol"></i> Sport</a>
+          <a href="faitsdivers.html"><i class="fa-solid fa-newspaper"></i> Faits divers</a>
+        </div>
+      </div>
+      <a href="multimedia.html" class="nav-link">Multimédia</a>
+      <a href="apropos.html" class="nav-link">À propos</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn-search" id="search-toggle"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <a href="#" class="btn-radio"><i class="fa-solid fa-radio"></i> Radio</a>
+      <a href="index.html#live" class="btn-live"><span class="live-dot"></span> Direct</a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="search-bar" id="search-bar">
+    <div class="search-inner"><i class="fa-solid fa-magnifying-glass"></i><input type="text" placeholder="Rechercher une émission..."><button class="search-close" id="search-close"><i class="fa-solid fa-xmark"></i></button></div>
+  </div>
+</header>
+
+<div class="social-bar">
+  <div class="social-bar-inner">
+    <span class="social-bar-label">Suivez-nous</span>
+    <a href="https://www.facebook.com/gayainfotv" target="_blank" rel="noopener" class="social-icon fb"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="https://www.youtube.com/@gayainfotv" target="_blank" rel="noopener" class="social-icon yt"><i class="fa-brands fa-youtube"></i></a>
+    <a href="#" class="social-icon ig"><i class="fa-brands fa-instagram"></i></a>
+    <a href="#" class="social-icon tw"><i class="fa-brands fa-x-twitter"></i></a>
+    <div class="social-bar-date" id="current-date"></div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="emissions-hero">
+  <div class="container hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Accueil</a><i class="fa-solid fa-chevron-right"></i>
+      <span class="current">Émissions</span>
+    </div>
+    <div class="hero-badge" style="color:#f06060;border-color:#f06060;"><i class="fa-solid fa-tv"></i> GAYA INFO TV</div>
+    <h1>Toutes nos <em>émissions</em></h1>
+    <p class="hero-desc">Débats, reportages, analyse et divertissement. Cinq rubriques, une seule mission : informer et valoriser notre région.</p>
+  </div>
+</section>
+
+<!-- HUB CONTENT -->
+<section class="emissions-hub">
+  <div class="container">
+
+    <div class="hub-intro">
+      <h2>Choisissez votre rubrique</h2>
+      <p>Chaque émission est disponible en replay sur notre chaîne YouTube et en podcast audio.</p>
+    </div>
+
+    <!-- 5 CARDS -->
+    <div class="emissions-cards">
+
+      <a href="societe.html" class="emission-hub-card">
+        <div class="card-bg" style="background: linear-gradient(160deg, #0e1a4a, #1a2d80);"></div>
+        <div class="card-overlay"></div>
+        <div class="card-body">
+          <div class="card-icon-wrap" style="background: rgba(45,91,227,0.35);"><i class="fa-solid fa-users"></i></div>
+          <h3>Société</h3>
+          <p>Débats citoyens, témoignages et vie sociale de notre communauté.</p>
+          <span class="card-arrow">Voir les épisodes <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <a href="economie.html" class="emission-hub-card">
+        <div class="card-bg" style="background: linear-gradient(160deg, #0a2e1a, #0f4a28);"></div>
+        <div class="card-overlay"></div>
+        <div class="card-body">
+          <div class="card-icon-wrap" style="background: rgba(26,124,79,0.35);"><i class="fa-solid fa-chart-line"></i></div>
+          <h3>Économie</h3>
+          <p>Agriculture, commerce local et développement économique régional.</p>
+          <span class="card-arrow">Voir les épisodes <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <a href="religion.html" class="emission-hub-card">
+        <div class="card-bg" style="background: linear-gradient(160deg, #2e1505, #4a2208);"></div>
+        <div class="card-overlay"></div>
+        <div class="card-body">
+          <div class="card-icon-wrap" style="background: rgba(184,87,26,0.35);"><i class="fa-solid fa-mosque"></i></div>
+          <h3>Religion</h3>
+          <p>Conférences islamiques, enseignements et vie spirituelle.</p>
+          <span class="card-arrow">Voir les épisodes <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <a href="sport.html" class="emission-hub-card">
+        <div class="card-bg" style="background: linear-gradient(160deg, #2e0810, #4a0c18);"></div>
+        <div class="card-overlay"></div>
+        <div class="card-body">
+          <div class="card-icon-wrap" style="background: rgba(200,16,46,0.35);"><i class="fa-solid fa-futbol"></i></div>
+          <h3>Sport</h3>
+          <p>Football, lutte et exploits sportifs de la région en direct.</p>
+          <span class="card-arrow">Voir les épisodes <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <a href="faitsdivers.html" class="emission-hub-card">
+        <div class="card-bg" style="background: linear-gradient(160deg, #2e2200, #4a3800);"></div>
+        <div class="card-overlay"></div>
+        <div class="card-body">
+          <div class="card-icon-wrap" style="background: rgba(153,102,0,0.35);"><i class="fa-solid fa-newspaper"></i></div>
+          <h3>Faits divers</h3>
+          <p>Sécurité, justice et chroniques judiciaires avec rigueur.</p>
+          <span class="card-arrow">Voir les épisodes <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- DERNIERS ÉPISODES TOUTES RUBRIQUES -->
+    <div class="recent-section">
+      <h2 class="recent-section-title">Derniers épisodes</h2>
+      <div class="recent-grid" id="recent-grid"></div>
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-band">
+      <div class="cta-band-text">
+        <h3>Ne ratez aucune émission</h3>
+        <p>Abonnez-vous à notre chaîne YouTube et activez les notifications pour être alerté dès qu'un nouvel épisode est disponible.</p>
+      </div>
+      <div class="cta-band-actions">
+        <a href="https://www.youtube.com/@gayainfotv" target="_blank" rel="noopener" class="cta-btn-primary">
+          <i class="fa-brands fa-youtube"></i> S'abonner sur YouTube
+        </a>
+        <a href="contact.html" class="cta-btn-secondary">
+          <i class="fa-solid fa-envelope"></i> Newsletter
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="video-lightbox">
+  <div class="lightbox-box">
+    <button class="lightbox-close" onclick="closeLightbox()"><i class="fa-solid fa-xmark"></i></button>
+    <iframe id="lightbox-iframe" allowfullscreen></iframe>
+    <p class="lightbox-title" id="lightbox-video-title"></p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="container footer-grid">
+      <div class="footer-col footer-brand">
+        <a href="index.html" class="footer-logo"><img src="gaya.jpg" onerror="this.style.display='none'"><span>GAYA INFO TV</span></a>
+        <p class="footer-about">Média de proximité dédié à l'information locale de Dagana, Saint-Louis et sa région.</p>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/gayainfotv" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.youtube.com/@gayainfotv" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Émissions</h4><ul>
+        <li><a href="societe.html">Société</a></li><li><a href="economie.html">Économie</a></li>
+        <li><a href="religion.html">Religion</a></li><li><a href="sport.html">Sport</a></li>
+        <li><a href="faitsdivers.html">Faits divers</a></li>
+      </ul></div>
+      <div class="footer-col"><h4>Navigation</h4><ul>
+        <li><a href="actualites.html">Actualités</a></li><li><a href="multimedia.html">Multimédia</a></li>
+        <li><a href="apropos.html">À propos</a></li><li><a href="contact.html">Contact</a></li>
+        <li><a href="don.html">Nous soutenir</a></li>
+      </ul></div>
+      <div class="footer-col footer-contact"><h4>Contact</h4>
+        <ul class="contact-list">
+          <li><i class="fa-solid fa-location-dot"></i> Gaé, Dagana — Saint-Louis, Sénégal</li>
+          <li><i class="fa-solid fa-envelope"></i> <a href="mailto:gayainfopdg@gmail.com">gayainfopdg@gmail.com</a></li>
+          <li><i class="fa-solid fa-phone"></i> 77 935 17 86 / 77 605 95 76</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom"><div class="footer-bottom-inner">
+    <span>© 2025 GAYA INFO TV — Tous droits réservés</span>
+    <span>Fait avec <i class="fa-solid fa-heart" style="color:var(--color-red)"></i> à Dagana, Sénégal</span>
+  </div></div>
+</footer>
+
+<script src="script.js"></script>
+<script src="emissions.js"></script>
+<script>
+const recentAll = [
+  { cat: 'Société', catClass: 'cat-societe', catColor: '#2d5be3', bg: 'linear-gradient(135deg,#0e1a4a,#1a2d80)', icon: 'fa-users', title: 'Vie en Ville — Urbanisme et habitat à Dagana', date: '21 Avr 2025', duration: '48:00', href: 'societe.html' },
+  { cat: 'Économie', catClass: 'cat-economie', catColor: '#1a7c4f', bg: 'linear-gradient(135deg,#0a2e1a,#0f4a28)', icon: 'fa-chart-line', title: 'Marché hebdomadaire de Dagana : un écosystème méconnu', date: '19 Avr 2025', duration: '32:15', href: 'economie.html' },
+  { cat: 'Religion', catClass: 'cat-religion', catColor: '#b8571a', bg: 'linear-gradient(135deg,#2e1505,#4a2208)', icon: 'fa-mosque', title: 'Conférence islamique : le rôle de la femme dans la société', date: '16 Avr 2025', duration: '48:30', href: 'religion.html' },
+  { cat: 'Sport', catClass: 'cat-sport', catColor: '#c8102e', bg: 'linear-gradient(135deg,#2e0810,#4a0c18)', icon: 'fa-futbol', title: 'Tournoi de lutte de Dagana : les grands champions couronnés', date: '20 Avr 2025', duration: '1:05:00', href: 'sport.html' },
+  { cat: 'Faits divers', catClass: 'cat-faitsdivers', catColor: '#996600', bg: 'linear-gradient(135deg,#2e2200,#4a3800)', icon: 'fa-newspaper', title: 'Cybercriminalité : sensibilisation dans les écoles', date: '11 Avr 2025', duration: '28:00', href: 'faitsdivers.html' },
+  { cat: 'Société', catClass: 'cat-societe', catColor: '#2d5be3', bg: 'linear-gradient(135deg,#0e1a4a,#1a2d80)', icon: 'fa-users', title: 'Jeunesse et emploi : les défis de la génération Dagana', date: '14 Avr 2025', duration: '42:15', href: 'societe.html' },
+];
+
+document.getElementById('recent-grid').innerHTML = recentAll.map(r => `
+  <div class="recent-card" onclick="openVideo('dQw4w9WgXcQ','${r.title}')">
+    <div class="recent-thumb" style="background: ${r.bg};">
+      <span class="rt-icon"><i class="fa-solid ${r.icon}"></i></span>
+      <div class="rc-play-overlay"><div class="rc-play-circle"><i class="fa-solid fa-play" style="color:${r.catColor};font-size:14px;margin-left:3px;"></i></div></div>
+      <span class="rc-duration">${r.duration}</span>
+    </div>
+    <div class="recent-body">
+      <span class="rc-cat" style="background:${r.catColor}18;color:${r.catColor};">${r.cat}</span>
+      <h3 class="recent-title">${r.title}</h3>
+      <div class="rc-meta">
+        <span><i class="fa-regular fa-calendar"></i>${r.date}</span>
+        <span><i class="fa-regular fa-clock"></i>${r.duration}</span>
+      </div>
+    </div>
+  </div>`).join('');
+</script>
+</body>
+</html>

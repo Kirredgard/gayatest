@@ -1,0 +1,62 @@
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-label"><i class="fa-solid fa-circle" style="color:#e63939;font-size:8px;"></i> EN DIRECT</div>
+  <div class="ticker-content">
+    <span>🔴 Grand débat national sur la justice — suivez en direct sur GAYA INFO TV &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp; Service commercial : 77 935 17 86 / 77 605 95 76 &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;</span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <img src="gaya.jpg" alt="GAYA INFO TV" onerror="this.style.display='none'">
+      <div class="logo-text">
+        <span class="logo-name">GAYA INFO TV</span>
+        <span class="logo-tagline">L'information de proximité</span>
+      </div>
+    </a>
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html" class="nav-link">Accueil</a>
+      <a href="actualites.html" class="nav-link">Actualités</a>
+      <div class="nav-dropdown">
+        <a href="#" class="nav-link dropdown-trigger active">Émissions <i class="fa-solid fa-chevron-down" style="font-size:10px;"></i></a>
+        <div class="dropdown-menu">
+          <a href="societe.html"><i class="fa-solid fa-users"></i> Société</a>
+          <a href="economie.html"><i class="fa-solid fa-chart-line"></i> Économie</a>
+          <a href="religion.html"><i class="fa-solid fa-mosque"></i> Religion</a>
+          <a href="sport.html"><i class="fa-solid fa-futbol"></i> Sport</a>
+          <a href="faitsdivers.html"><i class="fa-solid fa-newspaper"></i> Faits divers</a>
+        </div>
+      </div>
+      <a href="multimedia.html" class="nav-link">Multimédia</a>
+      <a href="apropos.html" class="nav-link">À propos</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn-search" id="search-toggle"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <a href="#" class="btn-radio"><i class="fa-solid fa-radio"></i> Radio</a>
+      <a href="index.html#live" class="btn-live"><span class="live-dot"></span> Direct</a>
+      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="search-bar" id="search-bar">
+    <div class="search-inner">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" placeholder="Rechercher...">
+      <button class="search-close" id="search-close"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+  </div>
+</header>
+
+<!-- SOCIAL BAR -->
+<div class="social-bar">
+  <div class="social-bar-inner">
+    <span class="social-bar-label">Suivez-nous</span>
+    <a href="https://www.facebook.com/gayainfotv" target="_blank" rel="noopener" class="social-icon fb"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="https://www.youtube.com/@gayainfotv" target="_blank" rel="noopener" class="social-icon yt"><i class="fa-brands fa-youtube"></i></a>
+    <a href="#" class="social-icon ig"><i class="fa-brands fa-instagram"></i></a>
+    <a href="#" class="social-icon tw"><i class="fa-brands fa-x-twitter"></i></a>
+    <div class="social-bar-date" id="current-date"></div>
+  </div>
+</div>

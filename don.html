@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nous soutenir — GAYA INFO TV</title>
+<meta name="description" content="Soutenez GAYA INFO TV, média de proximité indépendant de Dagana, Saint-Louis.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<style>
+
+/* ================================================
+   PAGE DON — STYLES SPÉCIFIQUES
+   ================================================ */
+
+/* HERO DON */
+.don-hero {
+  background: linear-gradient(135deg, var(--color-dark) 0%, #1c0a12 60%, #2a0d1a 100%);
+  padding: 20px 0 20px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.don-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 50%, rgba(200,16,46,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 80% 30%, rgba(200,16,46,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Particules décoratives */
+.don-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(200,16,46,0.25) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 48px 48px, 24px 24px;
+  background-position: 0 0, 12px 12px;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.don-hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.don-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(200,16,46,0.15);
+  border: 1px solid rgba(200,16,46,0.3);
+  border-radius: 999px;
+  padding: 6px 16px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #ff6b8a;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 24px;
+  animation: fadeInUp 0.5s ease both;
+}
+
+.don-hero-badge i {
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+.don-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(12px, 5vw, 32px);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 18px;
+  animation: fadeInUp 0.5s 0.1s ease both;
+}
+
+.don-hero h1 em {
+  font-style: normal;
+  color: var(--color-red);
+}
+
+.don-hero p {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.7;
+  max-width: 520px;
+  margin: 0 auto 32px;
+  animation: fadeInUp 0.5s 0.2s ease both;
+}
+
+.don-hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  animation: fadeInUp 0.5s 0.3s ease both;
+}
+
+.don-stat {
+  text-align: center;
+}
+
+.don-stat-num {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.don-stat-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ================================================
+   MAIN DON SECTION
+   ================================================ */
+.don-main {
+  padding: 56px 0 80px;
+}
+
+.don-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 40px;
+  align-items: start;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ================================================
+   FORMULAIRE DON
+   ================================================ */
+.don-form-card {
+  background: var(--color-white);
+  border-radius: 20px;
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  animation: fadeInUp 0.5s 0.1s ease both;
+}
+
+.don-form-header {
+  background: linear-gradient(135deg, var(--color-dark) 0%, #1c0a12 100%);
+  padding: 18px 22px;
+}
+
+.don-form-header h2 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 3px;
+}
+
+.don-form-header p {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+}
+
+/* TABS UNIQUE / MENSUEL */
+.don-tabs {
+  display: flex;
+  padding: 0 22px;
+  gap: 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.don-tab {
+  flex: 1;
+  padding: 9px 12px;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  border-bottom: 2px solid transparent;
+  text-align: center;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.don-tab.active {
+  color: var(--color-red);
+  border-bottom-color: var(--color-red);
+}
+
+/* MONTANTS */
+.don-form-body {
+  padding: 18px 22px 22px;
+}
+
+.don-field-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+
+.don-amounts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+  margin-bottom: 10px;
+}
+
+.don-amount-btn {
+  padding: 9px 6px;
+  border: 1.5px solid var(--color-border);
+  border-radius: 8px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text);
+  background: var(--color-bg);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.don-amount-btn:hover {
+  border-color: var(--color-red);
+  color: var(--color-red);
+  background: var(--color-red-light);
+}
+
+.don-amount-btn.selected {
+  border-color: var(--color-red);
+  background: var(--color-red);
+  color: #fff;
+  transform: scale(1.03);
+  box-shadow: 0 4px 16px rgba(200,16,46,0.3);
+}
+
+.don-amount-btn .amount-sub {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 9px;
+  font-weight: 400;
+  opacity: 0.7;
+  margin-top: 1px;
+}
+
+.don-amount-btn.selected .amount-sub { opacity: 0.85; }
+
+/* INPUT LIBRE */
+.don-free-input {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.don-free-input input {
+  width: 100%;
+  padding: 12px 16px 12px 44px;
+  border: 1.5px solid var(--color-border);
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-text);
+  background: var(--color-bg);
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.don-free-input input:focus {
+  border-color: var(--color-red);
+  background: #fff;
+}
+
+.don-free-input .currency {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+/* PAIEMENT */
+.don-payment-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+
+.don-payment-methods {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.don-payment-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border: 1.5px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-bg);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--color-text-2);
+}
+
+.don-payment-btn:hover {
+  border-color: var(--color-red);
+  background: var(--color-red-light);
+}
+
+.don-payment-btn.selected {
+  border-color: var(--color-red);
+  background: var(--color-red-light);
+  color: var(--color-red);
+}
+
+.don-payment-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 900;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.pay-wave .don-payment-icon { background: white; }
+.pay-orange .don-payment-icon { background: white; border-radius: 6px; }
+
+/* COORDONNÉES */
+.don-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.don-info-grid.full { grid-template-columns: 1fr; }
+
+.don-input-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.don-input-wrap label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.don-input-wrap input,
+.don-input-wrap select {
+  padding: 8px 11px;
+  border: 1.5px solid var(--color-border);
+  border-radius: 7px;
+  font-size: 13px;
+  color: var(--color-text);
+  background: var(--color-bg);
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  appearance: none;
+}
+
+.don-input-wrap input:focus,
+.don-input-wrap select:focus {
+  border-color: var(--color-red);
+  background: #fff;
+}
+
+/* BOUTON SUBMIT */
+.don-submit {
+  width: 100%;
+  padding: 12px;
+  background: var(--color-red);
+  color: #fff;
+  border-radius: 10px;
+  font-size: 13.5px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  border: none;
+  font-family: var(--font-body);
+  letter-spacing: 0.02em;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 20px rgba(200,16,46,0.3);
+}
+
+.don-submit:hover {
+  background: var(--color-red-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 28px rgba(200,16,46,0.4);
+}
+
+.don-submit:active { transform: translateY(0); }
+
+.don-submit i { font-size: 14px; }
+
+.don-secure-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 11.5px;
+  color: var(--color-text-muted);
+}
+
+.don-secure-note i { color: #22c55e; font-size: 11px; }
+
+/* ================================================
+   SIDEBAR DON
+   ================================================ */
+.don-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: fadeInUp 0.5s 0.2s ease both;
+}
+
+/* IMPACT CARD */
+.impact-card {
+  background: var(--color-white);
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.impact-card-header {
+  background: linear-gradient(135deg, #0d2137 0%, #0f3460 100%);
+  padding: 20px 22px;
+}
+
+.impact-card-header h3 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 4px;
+}
+
+.impact-card-header p {
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+}
+
+.impact-list {
+  padding: 16px 0;
+}
+
+.impact-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 22px;
+  border-bottom: 1px solid var(--color-border);
+  transition: background 0.15s;
+}
+
+.impact-item:last-child { border-bottom: none; }
+.impact-item:hover { background: var(--color-bg); }
+
+.impact-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.impact-icon.red { background: rgba(200,16,46,0.1); color: var(--color-red); }
+.impact-icon.blue { background: rgba(16,136,190,0.1); color: #1088be; }
+.impact-icon.green { background: rgba(34,197,94,0.1); color: #16a34a; }
+.impact-icon.orange { background: rgba(251,146,60,0.1); color: #ea580c; }
+
+.impact-text {}
+
+.impact-amount {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 2px;
+}
+
+.impact-desc {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+/* TÉMOIGNAGE */
+.temoignage-card {
+  background: linear-gradient(135deg, var(--color-dark) 0%, #1c0a12 100%);
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.temoignage-card::before {
+  content: '\201C';
+  position: absolute;
+  top: -10px;
+  right: 16px;
+  font-family: var(--font-display);
+  font-size: 100px;
+  color: rgba(200,16,46,0.15);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.temoignage-text {
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.65;
+  font-style: italic;
+  margin-bottom: 18px;
+  position: relative;
+  z-index: 1;
+}
+
+.temoignage-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.temoignage-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--color-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 900;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.temoignage-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 2px;
+}
+
+.temoignage-role {
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+}
+
+/* CONTACT DON */
+.don-contact-card {
+  background: var(--color-white);
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+  padding: 22px;
+  box-shadow: var(--shadow);
+}
+
+.don-contact-card h4 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.don-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.don-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  color: var(--color-text-2);
+}
+
+.don-contact-item i {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.don-contact-item .don-payment-icon.ic-wave { background: #e8f2fb; color: #1b75bc; width:32px; height:32px; }
+.don-contact-item .don-payment-icon.ic-orange { background: #fff3ea; color: #ff6600; width:32px; height:32px; }
+.don-contact-item .don-payment-icon.ic-mail { background: var(--color-red-light); color: var(--color-red); width:32px; height:32px; }
+
+/* MESSAGE DE SOUTIEN */
+.don-message-wrap {
+  border: 1.5px solid var(--color-border);
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--color-bg);
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.don-message-wrap:focus-within {
+  border-color: var(--color-red);
+  background: #fff;
+}
+
+.don-message-wrap textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: none;
+  background: transparent;
+  font-size: 13.5px;
+  color: var(--color-text);
+  resize: none;
+  outline: none;
+  font-family: var(--font-body);
+  line-height: 1.6;
+}
+
+.don-message-wrap textarea::placeholder {
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.don-message-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 14px 8px;
+  border-top: 1px solid var(--color-border);
+  background: rgba(0,0,0,0.02);
+}
+
+.don-message-hint {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.don-char-count {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* SUCCESS MESSAGE BOX */
+.success-message-box {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-left: 3px solid var(--color-red);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 0 auto 24px;
+  max-width: 340px;
+  text-align: left;
+  position: relative;
+}
+
+.success-message-box i {
+  color: var(--color-red);
+  font-size: 14px;
+  margin-bottom: 6px;
+  display: block;
+  opacity: 0.6;
+}
+
+.success-message-box p {
+  font-size: 13.5px;
+  color: var(--color-text-2);
+  font-style: italic;
+  line-height: 1.55;
+}
+
+/* ================================================
+   ================================================ */
+.don-success {
+  display: none;
+  text-align: center;
+  padding: 48px 32px;
+}
+
+.don-success.show { display: block; }
+.don-form-body.hidden { display: none; }
+.don-tabs.hidden { display: none; }
+
+.success-icon {
+  width: 72px;
+  height: 72px;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: #fff;
+  margin: 0 auto 20px;
+  animation: successPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes successPop {
+  from { transform: scale(0); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.success-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 10px;
+}
+
+.success-text {
+  font-size: 14px;
+  color: var(--color-text-2);
+  line-height: 1.6;
+  margin-bottom: 24px;
+  max-width: 340px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.success-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 24px;
+  background: var(--color-red);
+  color: #fff;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  transition: background 0.2s;
+  cursor: pointer;
+  border: none;
+  font-family: var(--font-body);
+}
+
+.success-back:hover { background: var(--color-red-dark); }
+
+/* ================================================
+   WHY SECTION
+   ================================================ */
+.don-why {
+  background: var(--color-white);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  padding: 64px 0;
+}
+
+.don-why .container {
+  text-align: center;
+  margin-bottom: 44px;
+}
+
+.don-why-title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 900;
+  color: var(--color-text);
+  margin-bottom: 12px;
+}
+
+.don-why-sub {
+  font-size: 15px;
+  color: var(--color-text-muted);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.don-why-grid {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.why-card {
+  background: var(--color-bg);
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+  padding: 28px 22px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.why-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.why-card-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin: 0 auto 16px;
+}
+
+.why-card:nth-child(1) .why-card-icon { background: rgba(200,16,46,0.1); color: var(--color-red); }
+.why-card:nth-child(2) .why-card-icon { background: rgba(16,136,190,0.1); color: #1088be; }
+.why-card:nth-child(3) .why-card-icon { background: rgba(251,146,60,0.1); color: #ea580c; }
+.why-card:nth-child(4) .why-card-icon { background: rgba(34,197,94,0.1); color: #16a34a; }
+
+.why-card h4 {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 8px;
+}
+
+.why-card p {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+/* ================================================
+   RESPONSIVE DON
+   ================================================ */
+@media (max-width: 900px) {
+  .don-layout {
+    grid-template-columns: 1fr;
+  }
+  .don-why-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .don-hero-stats {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .don-amounts { grid-template-columns: repeat(3, 1fr); }
+  .don-payment-methods { grid-template-columns: 1fr; }
+  .don-info-grid { grid-template-columns: 1fr; }
+  .don-why-grid { grid-template-columns: 1fr; }
+  .don-hero-stats { flex-wrap: wrap; gap: 20px; }
+  .don-form-header { padding: 22px 22px; }
+  .don-form-body { padding: 22px 22px 26px; }
+}
+
+</style>
+</head>
+<body>
+
+<!-- BREAKING NEWS TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-label">INFO</div>
+  <div class="ticker-content">
+    <span> Actualités, analyses et couverture d'événements en direct — suivez tout ici &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp; Service commercial : 77 935 17 86 / 77 605 95 76 </span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <img src="gaya.jpg" alt="GAYA INFO TV" onerror="this.style.display='none'">
+      <div class="logo-text">
+        <span class="logo-name">GAYA INFO TV</span>
+        <span class="logo-tagline">L'information de proximité</span>
+      </div>
+    </a>
+    <nav class="main-nav" id="main-nav">
+      <a href="index.html" class="nav-link">Accueil</a>
+      <a href="actualites.html" class="nav-link">Actualités</a>
+      <div class="nav-dropdown">
+        <a href="#" class="nav-link dropdown-trigger">Émissions <i class="fa-solid fa-chevron-down chevron-icon" style="font-size:10px;"></i></a>
+        <div class="dropdown-menu">
+          <a href="societe.html"><i class="fa-solid fa-users"></i> Société</a>
+          <a href="economie.html"><i class="fa-solid fa-chart-line"></i> Économie</a>
+          <a href="religion.html"><i class="fa-solid fa-mosque"></i> Religion</a>
+          <a href="sport.html"><i class="fa-solid fa-futbol"></i> Sport</a>
+          <a href="faitsdivers.html"><i class="fa-solid fa-newspaper"></i> Faits divers</a>
+        </div>
+      </div>
+      <a href="multimedia.html" class="nav-link">Multimédia</a>
+      <a href="apropos.html" class="nav-link">À propos</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="btn-search" id="search-toggle" aria-label="Recherche"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <a href="#" class="btn-radio"><i class="fa-solid fa-radio"></i> Radio</a>
+      <a href="#live" class="btn-live"><span class="live-dot"></span> Direct</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="search-bar" id="search-bar">
+    <div class="search-inner">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" placeholder="Rechercher une actualité, une émission...">
+      <button class="search-close" id="search-close"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+  </div>
+</header>
+
+<!-- SOCIAL BAR -->
+<div class="social-bar">
+  <div class="social-bar-inner">
+    <span class="social-bar-label">Suivez-nous</span>
+    <a href="https://www.facebook.com/gayainfotv" target="_blank" rel="noopener" class="social-icon fb"><i class="fa-brands fa-facebook-f"></i></a>
+    <a href="https://www.youtube.com/@gayainfotv" target="_blank" rel="noopener" class="social-icon yt"><i class="fa-brands fa-youtube"></i></a>
+    <a href="#" class="social-icon ig"><i class="fa-brands fa-instagram"></i></a>
+    <a href="#" class="social-icon tw"><i class="fa-brands fa-x-twitter"></i></a>
+    <div class="social-bar-date" id="current-date"></div>
+  </div>
+</div>
+
+<!-- HERO DON -->
+<section class="don-hero">
+  <div class="don-hero-inner">
+    <div class="don-hero-badge">
+      <i class="fa-solid fa-heart"></i>
+      Soutenez le journalisme local
+    </div>
+    <h1>Ensemble, gardons<br><em>l'info vivante</em></h1>
+    <p>GAYA INFO TV couvre votre région avec indépendance et rigueur. Votre soutien nous permet de continuer à informer la communauté.</p>
+    <div class="don-hero-stats">
+      <div class="don-stat">
+        <div class="don-stat-num">+8K</div>
+        <div class="don-stat-label">Abonnés YouTube</div>
+      </div>
+      <div class="don-stat">
+        <div class="don-stat-num">100%</div>
+        <div class="don-stat-label">Indépendant</div>
+      </div>
+      <div class="don-stat">
+        <div class="don-stat-num">Local</div>
+        <div class="don-stat-label">Gaya · Dagana · Saint-Louis</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN -->
+<section class="don-main">
+  <div class="don-layout">
+
+    <!-- FORMULAIRE -->
+    <div class="don-form-card">
+      <div class="don-form-header">
+        <h2>Faire un don</h2>
+        <p>Choisissez le montant et le mode de paiement qui vous convient</p>
+      </div>
+
+      <!-- TABS -->
+      <div class="don-tabs" id="don-tabs">
+        <button class="don-tab active" onclick="setTab('unique', this)">Don unique</button>
+        <button class="don-tab" onclick="setTab('mensuel', this)">Don mensuel</button>
+      </div>
+
+      <!-- FORM BODY -->
+      <div class="don-form-body" id="don-form-body">
+
+        <!-- MONTANTS -->
+        <div class="don-field-label">Choisissez un montant (FCFA)</div>
+        <div class="don-amounts" id="don-amounts">
+          <button class="don-amount-btn" onclick="selectAmount(this, 1000)">
+            1 000
+            <span class="amount-sub">FCFA</span>
+          </button>
+          <button class="don-amount-btn selected" onclick="selectAmount(this, 2000)">
+            2 000
+            <span class="amount-sub">FCFA</span>
+          </button>
+          <button class="don-amount-btn" onclick="selectAmount(this, 5000)">
+            5 000
+            <span class="amount-sub">FCFA</span>
+          </button>
+          <button class="don-amount-btn" onclick="selectAmount(this, 10000)">
+            10 000
+            <span class="amount-sub">FCFA</span>
+          </button>
+          <button class="don-amount-btn" onclick="selectAmount(this, 25000)">
+            25 000
+            <span class="amount-sub">FCFA</span>
+          </button>
+          <button class="don-amount-btn" onclick="selectAmount(this, 0)">
+            Libre
+            <span class="amount-sub">Votre choix</span>
+          </button>
+        </div>
+
+        <!-- MONTANT LIBRE -->
+        <div class="don-free-input" id="free-input-wrap" style="display:none;">
+          <span class="currency">FCFA</span>
+          <input type="number" id="free-amount" placeholder="Entrez le montant souhaité" min="500">
+        </div>
+
+        <!-- SÉPARATEUR -->
+        <div style="height:1px; background: var(--color-border); margin: 14px 0;"></div>
+
+        <!-- MOYENS DE PAIEMENT -->
+        <div class="don-payment-label">Mode de paiement</div>
+        <div class="don-payment-methods">
+          <button class="don-payment-btn pay-wave selected" onclick="selectPayment(this)">
+            <div class="don-payment-icon">
+              <img src="logos/wave.png" alt="Wave" style="width:28px;height:28px;object-fit:contain;border-radius:6px;">
+            </div>
+            <span>Wave</span>
+          </button>
+          <button class="don-payment-btn pay-orange" onclick="selectPayment(this)">
+            <div class="don-payment-icon">
+              <img src="logos/omoney.png" alt="Orange Money" style="width:28px;height:28px;object-fit:contain;border-radius:6px;">
+            </div>
+            <span>Orange Money</span>
+          </button>
+        </div>
+
+        <!-- COORDONNÉES -->
+        <div style="height:1px; background: var(--color-border); margin: 0 0 14px;"></div>
+        <div class="don-field-label">Vos coordonnées <span style="font-weight:400; text-transform:none; letter-spacing:0;">(optionnel)</span></div>
+
+        <div class="don-info-grid">
+          <div class="don-input-wrap">
+            <label>Prénom</label>
+            <input type="text" placeholder="Ex: Moussa">
+          </div>
+          <div class="don-input-wrap">
+            <label>Nom</label>
+            <input type="text" placeholder="Ex: Diallo">
+          </div>
+        </div>
+
+        <div class="don-info-grid full">
+          <div class="don-input-wrap">
+            <label>Numéro de téléphone</label>
+            <input type="tel" placeholder="Ex: 77 000 00 00" id="phone-input">
+          </div>
+        </div>
+
+        <!-- MESSAGE DE SOUTIEN -->
+        <div style="height:1px; background: var(--color-border); margin: 4px 0 14px;"></div>
+        <div class="don-field-label">Message de soutien <span style="font-weight:400; text-transform:none; letter-spacing:0;">(optionnel)</span></div>
+        <div class="don-message-wrap">
+          <textarea id="don-message" placeholder="Laissez un mot d'encouragement à l'équipe de GAYA INFO TV…" maxlength="300" rows="3" oninput="updateCharCount(this)"></textarea>
+          <div class="don-message-footer">
+            <span class="don-message-hint"><i class="fa-solid fa-heart" style="color:var(--color-red); font-size:10px;"></i> Votre message sera transmis à la rédaction</span>
+            <span class="don-char-count"><span id="char-count">0</span>/300</span>
+          </div>
+        </div>
+
+        <div style="height: 12px;"></div>
+
+        <!-- SUBMIT -->
+        <button class="don-submit" onclick="submitDon()">
+          <i class="fa-solid fa-heart"></i>
+          Confirmer mon don — <span id="amount-display">2 000 FCFA</span>
+        </button>
+
+        <div class="don-secure-note">
+          <i class="fa-solid fa-shield-halved"></i>
+          Transaction sécurisée · Vos données sont protégées
+        </div>
+      </div>
+
+      <!-- SUCCESS -->
+      <div class="don-success" id="don-success">
+        <div class="success-icon"><i class="fa-solid fa-check"></i></div>
+        <div class="success-title">Merci pour votre don !</div>
+        <div class="success-text">Votre générosité nous touche profondément. Grâce à vous, GAYA INFO TV continue d'informer les communautés de Dagana et Saint-Louis.</div>
+        <div class="success-message-box" id="success-message-box" style="display:none;">
+          <i class="fa-solid fa-quote-left"></i>
+          <p id="success-message-text"></p>
+        </div>
+        <button class="success-back" onclick="resetForm()">
+          <i class="fa-solid fa-arrow-left"></i> Retour
+        </button>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="don-sidebar">
+
+      <!-- IMPACT -->
+      <div class="impact-card">
+        <div class="impact-card-header">
+          <h3>Votre don en action</h3>
+          <p>Ce que votre contribution rend possible</p>
+        </div>
+        <div class="impact-list">
+          <div class="impact-item">
+            <div class="impact-icon red"><i class="fa-solid fa-camera"></i></div>
+            <div class="impact-text">
+              <div class="impact-amount">20 000 FCFA</div>
+              <div class="impact-desc">Finance 1 reportage de terrain dans votre commune</div>
+            </div>
+          </div>
+          <div class="impact-item">
+            <div class="impact-icon blue"><i class="fa-solid fa-microphone"></i></div>
+            <div class="impact-text">
+              <div class="impact-amount">15 000 FCFA</div>
+              <div class="impact-desc">Couvre les frais d'une émission en direct</div>
+            </div>
+          </div>
+          <div class="impact-item">
+            <div class="impact-icon green"><i class="fa-solid fa-satellite-dish"></i></div>
+            <div class="impact-text">
+              <div class="impact-amount">50 000 FCFA</div>
+              <div class="impact-desc">Maintient notre diffusion pendant 1 semaine</div>
+            </div>
+          </div>
+          <div class="impact-item">
+            <div class="impact-icon orange"><i class="fa-solid fa-newspaper"></i></div>
+            <div class="impact-text">
+              <div class="impact-amount">200 000 FCFA</div>
+              <div class="impact-desc">Finance un mois de couverture d'actualité locale</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TÉMOIGNAGE -->
+      <div class="temoignage-card">
+        <p class="temoignage-text">
+          "GAYA INFO TV est notre fenêtre sur l'actualité locale. Grâce à eux, notre communauté reste informée et connectée."
+        </p>
+        <div class="temoignage-author">
+          <div class="temoignage-avatar">A</div>
+          <div>
+            <div class="temoignage-name">Aminata S.</div>
+            <div class="temoignage-role">Habitante de Dagana</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTACT DIRECT -->
+      <div class="don-contact-card">
+        <h4>Don direct par téléphone</h4>
+        <div class="don-contact-list">
+          <div class="don-contact-item">
+            <i class="don-payment-icon ic-wave fa-solid fa-w"></i>
+            <div>
+              <div style="font-weight:700; font-size:13px;">Wave</div>
+              <div style="font-size:12px; color:var(--color-text-muted);">77 935 17 86</div>
+            </div>
+          </div>
+          <div class="don-contact-item">
+            <i class="don-payment-icon ic-orange fa-solid fa-mobile-screen"></i>
+            <div>
+              <div style="font-weight:700; font-size:13px;">Orange Money</div>
+              <div style="font-size:12px; color:var(--color-text-muted);">77 605 95 76</div>
+            </div>
+          </div>
+          <div class="don-contact-item">
+            <i class="don-payment-icon ic-mail fa-solid fa-envelope"></i>
+            <div>
+              <div style="font-weight:700; font-size:13px;">Par e-mail</div>
+              <div style="font-size:12px; color:var(--color-text-muted);">gayainfopdg@gmail.com</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- POURQUOI NOUS SOUTENIR -->
+<section class="don-why">
+  <div class="container">
+    <h2 class="don-why-title">Pourquoi nous soutenir ?</h2>
+    <p class="don-why-sub">GAYA INFO TV est un média indépendant au service de sa communauté</p>
+  </div>
+  <div class="don-why-grid">
+    <div class="why-card">
+      <div class="why-card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+      <h4>Indépendance éditoriale</h4>
+      <p>Aucune pression publicitaire ou politique. Nous informons librement et objectivement.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-card-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+      <h4>Ancrage local</h4>
+      <p>Présents sur le terrain à Dagana et Saint-Louis pour une info au plus près de vous.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-card-icon"><i class="fa-solid fa-users"></i></div>
+      <h4>Financement participatif</h4>
+      <p>C'est votre soutien qui nous permet de fonctionner et de grandir durablement.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-card-icon"><i class="fa-solid fa-leaf"></i></div>
+      <h4>Média durable</h4>
+      <p>Chaque don contribue à pérenniser un journalisme de proximité pour les générations futures.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="container footer-grid">
+      <div class="footer-col footer-brand">
+        <a href="index.html" class="footer-logo">
+          <img src="gaya.jpg" alt="GAYA INFO TV" onerror="this.style.display='none'">
+          <span>GAYA INFO TV</span>
+        </a>
+        <p class="footer-about">Média de proximité dédié à l'information locale, nous couvrons l'actualité avec rigueur et impartialité.</p>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/gayainfotv" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="https://www.youtube.com/@gayainfotv" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" aria-label="X/Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="actualites.html">Actualités</a></li>
+          <li><a href="societe.html">Société</a></li>
+          <li><a href="economie.html">Économie</a></li>
+          <li><a href="religion.html">Religion</a></li>
+          <li><a href="sport.html">Sport</a></li>
+          <li><a href="faitsdivers.html">Faits divers</a></li>
+          <li><a href="multimedia.html">Multimédia</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Groupe GAYA INFO</h4>
+        <ul>
+          <li><a href="#">Radio Gaya</a></li>
+          <li><a href="#">GAYA Sport & Culture</a></li>
+        </ul>
+        <h4 style="margin-top: 1.5rem;">Informations</h4>
+        <ul>
+          <li><a href="apropos.html">À propos</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="don.html">Nous soutenir</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact">
+        <h4>Nous contacter</h4>
+        <ul class="contact-list">
+          <li><i class="fa-solid fa-location-dot"></i> Gaé, Dagana — 23002 Saint-Louis, Sénégal</li>
+          <li><i class="fa-solid fa-envelope"></i> <a href="mailto:gayainfopdg@gmail.com">gayainfopdg@gmail.com</a></li>
+          <li><i class="fa-solid fa-phone"></i> 77 935 17 86 / 77 605 95 76</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <span>© 2025 GAYA INFO TV — Tous droits réservés</span>
+      <span>Dev - SKadiar Design</span>
+    </div>
+  </div>
+</footer>
+
+<!-- TOAST BIENTÔT DISPONIBLE -->
+<div class="toast-soon" id="toast-soon">
+  <div class="toast-soon-icon"><i class="fa-solid fa-radio"></i></div>
+  <div class="toast-soon-text">
+    <div class="toast-soon-title">Bientôt disponible</div>
+    <div class="toast-soon-sub">Cette fonctionnalité arrive très prochainement ✨</div>
+  </div>
+  <button class="toast-soon-close" onclick="hideToast()"><i class="fa-solid fa-xmark"></i></button>
+</div>
+
+<script>
+/* ---- HEADER SCROLL ---- */
+window.addEventListener('scroll', () => {
+  document.getElementById('site-header').classList.toggle('scrolled', window.scrollY > 10);
+});
+
+/* ---- DATE ---- */
+const dateEl = document.getElementById('current-date');
+if (dateEl) {
+  const d = new Date();
+  dateEl.textContent = d.toLocaleDateString('fr-FR', { weekday:'long', day:'numeric', month:'long', year:'numeric' });
+}
+
+/* ---- HAMBURGER ---- */
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('main-nav').classList.toggle('open');
+});
+
+/* ---- SEARCH ---- */
+document.getElementById('search-toggle').addEventListener('click', () => {
+  document.getElementById('search-bar').classList.toggle('open');
+});
+document.getElementById('search-close').addEventListener('click', () => {
+  document.getElementById('search-bar').classList.remove('open');
+});
+
+/* ---- TOAST ---- */
+let toastTimer = null;
+
+function showToast(event, iconClass) {
+  const toast = document.getElementById('toast-soon');
+  const icon = toast.querySelector('.toast-soon-icon i');
+  if (iconClass) icon.className = iconClass;
+  const x = event.clientX, y = event.clientY;
+  const toastW = 260, margin = 12;
+  const left = (x + toastW + margin > window.innerWidth) ? x - toastW - margin : x + margin;
+  toast.style.left = left + 'px';
+  toast.style.top = (y + margin) + 'px';
+  toast.style.bottom = 'auto';
+  toast.style.transformOrigin = (left < x) ? 'top right' : 'top left';
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => hideToast(), 3000);
+}
+
+function hideToast() {
+  document.getElementById('toast-soon').classList.remove('show');
+}
+
+document.querySelector('.btn-radio').addEventListener('click', e => {
+  e.preventDefault();
+  showToast(e, 'fa-solid fa-radio');
+});
+
+document.querySelectorAll('.footer-col a[href="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    const icon = link.textContent.trim().includes('Sport') ? 'fa-solid fa-futbol' : 'fa-solid fa-radio';
+    showToast(e, icon);
+  });
+});
+
+/* ---- DON LOGIC ---- */
+let selectedAmount = 2000;
+let selectedTab = 'unique';
+
+function setTab(tab, btn) {
+  selectedTab = tab;
+  document.querySelectorAll('.don-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  updateDisplay();
+}
+
+function selectAmount(btn, amount) {
+  document.querySelectorAll('.don-amount-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  selectedAmount = amount;
+  const freeWrap = document.getElementById('free-input-wrap');
+  if (amount === 0) {
+    freeWrap.style.display = 'block';
+    freeWrap.style.animation = 'fadeInUp 0.3s ease both';
+  } else {
+    freeWrap.style.display = 'none';
+  }
+  updateDisplay();
+}
+
+function selectPayment(btn) {
+  document.querySelectorAll('.don-payment-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+}
+
+function updateDisplay() {
+  const freeVal = parseInt(document.getElementById('free-amount').value) || 0;
+  const amount = selectedAmount === 0 ? freeVal : selectedAmount;
+  const formatted = amount > 0 ? amount.toLocaleString('fr-FR') + ' FCFA' : '...';
+  document.getElementById('amount-display').textContent = formatted;
+}
+
+document.getElementById('free-amount').addEventListener('input', updateDisplay);
+
+function updateCharCount(el) {
+  document.getElementById('char-count').textContent = el.value.length;
+  updateDisplay();
+}
+
+function submitDon() {
+  const freeVal = parseInt(document.getElementById('free-amount').value) || 0;
+  const amount = selectedAmount === 0 ? freeVal : selectedAmount;
+  if (amount < 500) {
+    alert('Le montant minimum est de 500 FCFA.');
+    return;
+  }
+  // Afficher le message de soutien dans le succès
+  const msg = document.getElementById('don-message').value.trim();
+  const msgBox = document.getElementById('success-message-box');
+  const msgText = document.getElementById('success-message-text');
+  if (msg) {
+    msgText.textContent = msg;
+    msgBox.style.display = 'block';
+    msgBox.style.animation = 'fadeInUp 0.4s 0.3s ease both';
+  } else {
+    msgBox.style.display = 'none';
+  }
+  // Afficher succès
+  document.getElementById('don-form-body').classList.add('hidden');
+  document.getElementById('don-tabs').classList.add('hidden');
+  document.getElementById('don-success').classList.add('show');
+}
+
+function resetForm() {
+  document.getElementById('don-form-body').classList.remove('hidden');
+  document.getElementById('don-tabs').classList.remove('hidden');
+  document.getElementById('don-success').classList.remove('show');
+  document.getElementById('don-message').value = '';
+  document.getElementById('char-count').textContent = '0';
+}
+</script>
+</body>
+</html>
