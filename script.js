@@ -3,6 +3,7 @@
    ================================================ */
 
 // ── Clé CMS ──────────────────────────
+console.log("JS chargé !");
 const GAYA_STORAGE_KEY = 'gaya_articles';
 
 function loadCMSArticles() {
