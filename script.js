@@ -112,7 +112,79 @@ document.querySelectorAll('.main-nav a:not(.dropdown-trigger)').forEach(function
     if (window.innerWidth <= 900) closeNav();
   });
 });
+// ===== SAFE DOM READY =====
+document.addEventListener('DOMContentLoaded', () => {
 
+  // ===== HEADER SCROLL EFFECT =====
+  const header = document.getElementById('site-header');
+
+  if (header) {
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 10);
+    });
+  }
+
+  // ===== MOBILE NAV =====
+  const hamburger = document.getElementById('hamburger');
+  const mainNav   = document.getElementById('main-nav');
+
+  let navOpen = false;
+
+  function openNav() {
+    if (!mainNav || !hamburger) return;
+
+    mainNav.classList.add('open');
+    hamburger.classList.add('active');
+    navOpen = true;
+
+    // empêche scroll arrière sur mobile
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeNav() {
+    if (!mainNav || !hamburger) return;
+
+    mainNav.classList.remove('open');
+    hamburger.classList.remove('active');
+    navOpen = false;
+
+    document.body.style.overflow = '';
+  }
+
+  // CLICK HAMBURGER
+  if (hamburger && mainNav) {
+    hamburger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      navOpen ? closeNav() : openNav();
+    });
+  }
+
+  // CLICK EN DEHORS → ferme menu
+  document.addEventListener('click', (e) => {
+    if (!navOpen || !mainNav) return;
+
+    if (!mainNav.contains(e.target) && !hamburger.contains(e.target)) {
+      closeNav();
+    }
+  });
+
+  // CLICK SUR UN LIEN → ferme menu (mobile UX)
+  const navLinks = document.querySelectorAll('#main-nav a');
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      closeNav();
+    });
+  });
+
+  // ===== RESIZE FIX (important mobile ↔ desktop) =====
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && navOpen) {
+      closeNav();
+    }
+  });
+
+});
 // ---- SEARCH ----
 const searchToggle = document.getElementById('search-toggle');
 const searchBar    = document.getElementById('search-bar');
